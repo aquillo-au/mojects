@@ -3,7 +3,7 @@ FactoryBot.define do
     title { "MyString" }
     due_date { "2023-02-07" }
     description { "MyText" }
-    status { 1 }
+    status { 0 }
   end
 
   factory(:user) do

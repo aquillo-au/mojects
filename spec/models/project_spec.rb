@@ -9,4 +9,12 @@ RSpec.describe Project, type: :model do
     project = build(:project, due_date: Date.today.prev_day)
     expect(project.current).to eq true
   end
+  it 'ignores projects due_date when not current' do
+    project = build(:project, due_date: Date.today.next_day, status: 1)
+    expect(project.current).to eq true
+    project = build(:project, due_date: Date.today.next_day, status: 2)
+    expect(project.current).to eq true
+    project = build(:project, due_date: Date.today.next_day, status: 3)
+    expect(project.current).to eq true
+  end
 end
