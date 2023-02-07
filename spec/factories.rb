@@ -1,4 +1,9 @@
 FactoryBot.define do
+  factory :team do
+    name { "MyString" }
+    location { "MyString" }
+  end
+
   factory :assignment do
     task { nil }
     user { nil }

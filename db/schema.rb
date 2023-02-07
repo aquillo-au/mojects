@@ -10,16 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_07_003026) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_07_010043) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "assignments", force: :cascade do |t|
+    t.bigint "task_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_assignments_on_task_id"
+    t.index ["user_id"], name: "index_assignments_on_user_id"
+  end
+
   create_table "budgets", force: :cascade do |t|
+    t.bigint "project_id", null: false
     t.float "total"
     t.float "spent"
     t.float "allocated"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_budgets_on_project_id"
   end
 
   create_table "jobs", force: :cascade do |t|
@@ -38,14 +49,25 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_07_003026) do
     t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "team_id", null: false
+    t.index ["team_id"], name: "index_projects_on_team_id"
   end
 
   create_table "tasks", force: :cascade do |t|
+    t.bigint "project_id", null: false
     t.integer "estimated_time"
     t.date "due_date"
     t.text "description"
     t.string "title"
     t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_tasks_on_project_id"
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string "name"
+    t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -65,5 +87,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_07_003026) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "assignments", "tasks"
+  add_foreign_key "assignments", "users"
+  add_foreign_key "budgets", "projects"
   add_foreign_key "jobs", "tasks"
+  add_foreign_key "projects", "teams"
+  add_foreign_key "tasks", "projects"
 end
