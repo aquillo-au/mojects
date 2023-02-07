@@ -1,4 +1,10 @@
 FactoryBot.define do
+  factory :job do
+    task_id { nil }
+    status { 1 }
+    title { "MyString" }
+  end
+
   factory :budget do
     total { 100 }
     spent { 50 }

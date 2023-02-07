@@ -1,4 +1,5 @@
 class Task < ApplicationRecord
+  has_many :jobs
   enum :status, { in_progress: 0, completed: 1, rejected: 2 }
 
   def current?
