@@ -1,4 +1,10 @@
 FactoryBot.define do
+  factory :participant do
+    user { nil }
+    project { nil }
+    type { 1 }
+  end
+
   factory :membership do
     leader { false }
     team { nil }
