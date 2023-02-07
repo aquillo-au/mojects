@@ -1,7 +1,21 @@
 FactoryBot.define do
+  factory :budget do
+    total { 100 }
+    spent { 50 }
+    allocated { 30 }
+  end
+
+  factory :task do
+    estimated_time { 1 }
+    due_date { Date.today }
+    description { "MyText" }
+    title { "MyString" }
+    status { 0 }
+  end
+
   factory :project do
     title { "MyString" }
-    due_date { "2023-02-07" }
+    due_date { Date.today }
     description { "MyText" }
     status { 0 }
   end
