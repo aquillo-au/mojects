@@ -1,4 +1,10 @@
 FactoryBot.define do
+  factory :membership do
+    leader { false }
+    team { nil }
+    user { nil }
+  end
+
   factory :team do
     name { "MyString" }
     location { "MyString" }
