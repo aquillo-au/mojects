@@ -1,4 +1,9 @@
 FactoryBot.define do
+  factory :assignment do
+    task { nil }
+    user { nil }
+  end
+
   factory :job do
     task_id { nil }
     status { 1 }
