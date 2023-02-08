@@ -43,7 +43,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_07_010539) do
   end
 
   create_table "memberships", force: :cascade do |t|
-    t.boolean "leader"
+    t.boolean "leader", default: false
     t.bigint "team_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
@@ -55,7 +55,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_07_010539) do
   create_table "participants", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "project_id", null: false
-    t.integer "type"
+    t.integer "type", default: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_participants_on_project_id"
