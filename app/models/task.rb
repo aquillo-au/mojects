@@ -1,4 +1,5 @@
 class Task < ApplicationRecord
+  validates :title, presence: true
   has_many :jobs
   has_many :assignments
   belongs_to :project

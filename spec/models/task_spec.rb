@@ -15,4 +15,9 @@ RSpec.describe Task, type: :model do
     task = build(:task, due_date: Date.today.next_day, status: 2)
     expect(task.current?).to eq true
   end
+  it 'Checks if task has a project' do
+    task = build(:task)
+    expect(task).to_not be_valid
+  end
+
 end
