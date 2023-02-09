@@ -4,7 +4,7 @@ class CreateProjects < ActiveRecord::Migration[7.0]
       t.string :title
       t.date :due_date
       t.text :description
-      t.integer :status
+      t.integer :status, default: 0
 
       t.timestamps
     end
