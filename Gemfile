@@ -81,8 +81,10 @@ group :test do
   gem "webdrivers"
 end
 
-gem "pundit", "~> 2.3"
+# gem "pundit", "~> 2.3"
 
 gem "tailwindcss-rails", "~> 2.0"
 
 gem "redis-rails", "~> 5.0"
+
+gem "rack-cors", "~> 1.1"

@@ -1,6 +1,6 @@
 class Project < ApplicationRecord
   validates :title, :due_date, :status, presence: true
-  has_one :budget, optional: true
+  has_one :budget
   belongs_to :team, optional: true
   has_many :tasks
   has_many :participants

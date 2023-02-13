@@ -1,22 +1,12 @@
 class ApplicationController < ActionController::Base
-  # before_action :configure_permitted_parameters, if: :devise_controller?
+  protect_from_forgery with: :exception
+
+  before_action :set_csrf_cookie
   before_action :authenticate_user!
-  include Pundit::Authorization
-
-  after_action :verify_authorized, except: :index, unless: :skip_pundit?
-  after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
-
-  def configure_permitted_parameters
-    # For additional fields in app/views/devise/registrations/new.html.erb
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :pay_rate, :skills, :phone])
-
-    # For additional in app/views/devise/registrations/edit.html.erb
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :pay_rate, :skills, :phone])
-  end
 
   private
 
-  def skip_pundit?
-    devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
+  def set_csrf_cookie
+    cookies['CSRF-TOKEN'] = form_authenticity_token
   end
 end

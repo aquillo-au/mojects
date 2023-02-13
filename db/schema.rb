@@ -35,7 +35,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_07_010539) do
 
   create_table "jobs", force: :cascade do |t|
     t.bigint "task_id", null: false
-    t.integer "status"
+    t.boolean "status"
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -66,10 +66,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_07_010539) do
     t.string "title"
     t.date "due_date"
     t.text "description"
-    t.integer "status"
+    t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "team_id", null: false
+    t.bigint "team_id"
     t.index ["team_id"], name: "index_projects_on_team_id"
   end
 
@@ -79,7 +79,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_07_010539) do
     t.date "due_date"
     t.text "description"
     t.string "title"
-    t.integer "status"
+    t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_tasks_on_project_id"
@@ -100,7 +100,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_07_010539) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "phone"
+    t.string "phone"
     t.float "pay_rate"
     t.string "name"
     t.index ["email"], name: "index_users_on_email", unique: true

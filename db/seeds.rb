@@ -13,7 +13,7 @@ bertha = User.create(
   pay_rate: 50.00
 )
 member1 = Membership.new
-bertha.membership = member1
+member1.user = bertha
 
 member1.leader = true
 frank = User.create(
@@ -24,7 +24,7 @@ frank = User.create(
   pay_rate: 45.50
 )
 member2 = Membership.new
-frank.membership = member2
+member2.user = frank
 
 aplha = Team.create(
   name: 'aplha',
@@ -36,7 +36,7 @@ member2.team = aplha
 
 project = Project.create(
   title: 'work',
-  due_date: Date.today + 10,
+  due_date: Date.today,
   description: 'work work',
   team_id: aplha.id
 )
