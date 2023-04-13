@@ -2,6 +2,6 @@ class HomeController < ApplicationController
   def index; end
 
   def create
-    render json: { message: 'Welcome to the API' }
+    render json: { message: "Hi i'm the API" }
   end
 end

@@ -60,6 +60,7 @@ group :development, :test do
   gem "rspec-rails"
   gem "faker"
   gem "factory_bot_rails"
+  gem 'dotenv-rails'
 end
 
 group :development do
@@ -81,10 +82,18 @@ group :test do
   gem "webdrivers"
 end
 
-# gem "pundit", "~> 2.3"
+gem "pundit", "~> 2.3"
 
 gem "tailwindcss-rails", "~> 2.0"
 
 gem "redis-rails", "~> 5.0"
 
 gem "rack-cors", "~> 1.1"
+
+gem "omniauth-github", "~> 2.0"
+
+gem "omniauth-rails_csrf_protection", "~> 1.0"
+
+gem "recaptcha", "~> 5.12"
+
+gem "pundit", "~> 2.3"

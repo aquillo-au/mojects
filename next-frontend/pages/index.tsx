@@ -60,21 +60,25 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <form onSubmit={onSubmit}>
-          <div>
-            <input name="email" type="text" placeholder="Email" />
-          </div>
-          <div>
-            <input name="password" type="password" placeholder="Password" />
-          </div>
-          <div>
-            <button type="submit">Sign in</button>
-          </div>
-        </form>
-        <button onClick={onSignOut}>Sign out</button>
-        <button onClick={testEndpoint}>Test Endpoint</button>
+        <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-md w-full space-y-8">
+            <form onSubmit={onSubmit}>
+              <div >
+                <input name="email" type="text" placeholder="Email" />
+              </div>
+              <div>
+                <input name="password" type="password" placeholder="Password" />
+              </div>
+              <div>
+                <button type="submit">Sign in</button>
+              </div>
+            </form>
+            <button onClick={onSignOut}>Sign out</button>
+            <button onClick={testEndpoint}>Test Endpoint</button>
 
-        <Link href="/another">Go to /another</Link>
+            <Link href="/another">Go to /another</Link>
+          </div>
+        </div>
       </main>
     </div>
   );
